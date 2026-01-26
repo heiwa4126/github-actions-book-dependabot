@@ -1,7 +1,7 @@
 # github-actions-book-dependabot
 
 [GitHub CI/CD 実践ガイド | 技術評論社](https://gihyo.jp/book/2024/978-4-297-14173-8)
-の「8章: Dependabot」のあたりのコード
+の「8 章: Dependabot」のあたりのコード
 
 ## auto merge が死ぬ
 
@@ -39,17 +39,17 @@
 
 これの詳細設定(additional settings)で
 
-- "Require approvals" の数を 0か1 に設定 (Dependabot の場合、ワークフロー内で approve しているため)
+- "Require approvals" の数を 0 か 1 に設定 (Dependabot の場合、ワークフロー内で approve しているため)
 
 ### 注意
 
-"Require a pull request before merging (ターゲットブランチに直接 push するのを禁止し、必ず Pull Request 経由で merge させる)" をチェックしたんだから、今後はmainブランチに直接pushできない。
+"Require a pull request before merging (ターゲットブランチに直接 push するのを禁止し、必ず Pull Request 経由で merge させる)" をチェックしたんだから、今後は main ブランチに直接 push できない。
 
 ### additional settings の詳細
 
 - **Required approvals**  
   Pull Request を merge するために必要な承認数を設定する。
-  0〜n の数を指定可能。`gh pr review "${GITHUB_HEAD_REF}" --approve` しているから1あればOKのはず。
+  0〜n の数を指定可能。`gh pr review "${GITHUB_HEAD_REF}" --approve` しているから 1 あれば OK のはず。
 
 ### 代替手段
 
@@ -61,3 +61,14 @@
 
 `--auto` なしにすれば `Require a pull request before merging` の設定は不要。ただし
 即座にマージされるため、他のチェックが完了するのを待つことができなくなる。
+
+`gh pr merge --help` では
+
+> --auto Automatically merge only after necessary requirements are met
+
+って書いてあるね。
+
+### dependabotの生成するprは
+
+いまのところ hash で pin することができないらしい。タグ(バージョン)のみ。
+Renovate は hash pin できるらしい。
