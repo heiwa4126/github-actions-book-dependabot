@@ -1,0 +1,8 @@
+name: Old
+on: workflow_dispatch
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # 古いバージョンを意図的に指定
+      - uses: actions/setup-go@v4.0.0
