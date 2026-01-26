@@ -39,7 +39,7 @@
 
 これの詳細設定(additional settings)で
 
-- "Require approvals" の数を 0 か 1 に設定 (Dependabot の場合、ワークフロー内で approve しているため)
+- "Require approvals" の数を 0 に設定 (Dependabot の場合、ワークフロー内で approve しているため)
 
 ### 注意
 
@@ -48,8 +48,8 @@
 ### additional settings の詳細
 
 - **Required approvals**  
-  Pull Request を merge するために必要な承認数を設定する。
-  0〜n の数を指定可能。`gh pr review "${GITHUB_HEAD_REF}" --approve` しているから 1 あれば OK のはず。
+  Pull Request を merge するために必要なレビュー数を設定する。
+  0〜n の数を指定可能。`gh pr review "${GITHUB_HEAD_REF}" --approve` しているから 0 か 1 でいいはず。
 
 ### 代替手段
 
