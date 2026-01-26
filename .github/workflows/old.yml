@@ -5,4 +5,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # 古いバージョンを意図的に指定
-      - uses: actions/setup-go@v4.0.0
+      - uses: actions/setup-go@v6.2.0
