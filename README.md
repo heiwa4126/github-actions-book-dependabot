@@ -1,7 +1,7 @@
 # github-actions-book-dependabot
 
 [GitHub CI/CD 実践ガイド | 技術評論社](https://gihyo.jp/book/2024/978-4-297-14173-8)
-の「8 章: Dependabot」のあたりのコード
+の「8 章: Dependabot」の 8.2～8.4 あたりのコード
 
 ## auto merge が死ぬ
 
@@ -11,8 +11,8 @@
 
 本に書かれている:
 
-- Allow auto-merge
-- Allow GitHub Actions to create and approve pull requests
+- Allow auto-merge (Settingsの下のほう)
+- Allow GitHub Actions to create and approve pull requests (Settings -> Actions-> General. saveボタン)
 
 を有効にする**以外に** ブランチ保護ルール(Branch protection rules)を設定することが必要。
 
@@ -24,7 +24,7 @@
 
 "New branch ruleset" (または既存のルールを編集)
 
-今回は新しく作った。以下の通り
+今回は新しく作った。よくあるルールで以下の通り
 
 - Ruleset Name: "Protect default branch"
 - Enforcement status: "Active"
@@ -72,3 +72,14 @@
 
 いまのところ hash で pin することができないらしい。タグ(バージョン)のみ。
 Renovate は hash pin できるらしい。
+
+また、package-ecosystem: github-actions は semver(タグ) でも コミットID でもサポートしているらしい。
+
+> Dependabot では、ファイル内のアクションごとに、アクションのリファレンス (通常、アクションに関連付けられているバージョン番号またはコミット ID) が最新バージョンと参照されます。
+
+引用元: [GitHub Dependabot のバージョンアップデートについて - GitHub ドキュメント](https://docs.github.com/ja/code-security/concepts/supply-chain-security/about-dependabot-version-updates)
+
+ただコミットIDだと期待した通りには動かん可能性があるらしい。
+特に バージョンコメントなしのSHA がまずいらしい。
+
+これも Renovate ならちゃんと動くらしい。

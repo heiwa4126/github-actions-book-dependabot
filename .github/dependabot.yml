@@ -3,4 +3,5 @@ updates:
   - package-ecosystem: github-actions # パッケージエコシステム
     directory: / # パッケージマニフェストの配置先ディレクトリ/GitHub Actionsのみ固定で「/」
     schedule: # バージョンアップスケジュール
-      interval: daily
+      # interval: daily
+      interval: weekly
